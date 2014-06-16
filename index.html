@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="bower_components/phaser-official/build/phaser.js"></script>
+</head>
+<body>
+<script>
+    window.onload = function () {
+
+        var game = new Phaser.Game(320, 480, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+
+        function preload() {
+            game.load.pack('images', 'images/asset-pack.json');
+        }
+
+        function create() {
+            var type1 = game.add.group();
+
+            var a = game.add.sprite(200, 240, 'blue'), // top
+                b = game.add.sprite(175, 265, 'blue'), // bottom left
+                c = game.add.sprite(200, 265, 'blue'), // bottom
+                d = game.add.sprite(225, 240, 'blue'); // bottom right
+
+            type1.add(a);
+            type1.add(b);
+            type1.add(c);
+            type1.add(d);
+
+            //game.add.sprite(0, 0, 'hud');
+
+
+
+
+        }
+
+        function update() {
+
+        }
+    }
+</script>
+
+</body>
+
+</html>

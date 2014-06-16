@@ -1,0 +1,65 @@
+{
+    "images": [
+        {
+            "type": "image",
+            "key": "background",
+            "url": "images/background.jpg",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "hud",
+            "url": "images/tetris_bg.jpg",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "gameover",
+            "url": "images/gameover.jpeg",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "red",
+            "url": "images/red.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "orange",
+            "url": "images/orange.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "yellow",
+            "url": "images/yellow.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "green",
+            "url": "images/green.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "blue",
+            "url": "images/blue.png",
+            "overwrite": false
+        },
+        {
+            "type": "image",
+            "key": "cyan",
+            "url": "images/cyan.png",
+            "overwrite": false
+        }
+    ],
+    "meta": {
+        "generated": "1401380327373",
+        "version": "1.0",
+        "app": "Phaser Asset Packer",
+        "url": "http://phaser.io",
+        "copyright": "Photon Storm Ltd. 2014"
+    }
+}
