@@ -1,65 +1,92 @@
+{"frames": [
+
 {
-    "images": [
-        {
-            "type": "image",
-            "key": "background",
-            "url": "images/background.jpg",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "hud",
-            "url": "images/tetris_bg.jpg",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "gameover",
-            "url": "images/gameover.jpeg",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "red",
-            "url": "images/red.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "orange",
-            "url": "images/orange.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "yellow",
-            "url": "images/yellow.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "green",
-            "url": "images/green.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "blue",
-            "url": "images/blue.png",
-            "overwrite": false
-        },
-        {
-            "type": "image",
-            "key": "cyan",
-            "url": "images/cyan.png",
-            "overwrite": false
-        }
-    ],
-    "meta": {
-        "generated": "1401380327373",
-        "version": "1.0",
-        "app": "Phaser Asset Packer",
-        "url": "http://phaser.io",
-        "copyright": "Photon Storm Ltd. 2014"
-    }
+	"filename": "background.jpg",
+	"frame": {"x":646,"y":2,"w":320,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":480},
+	"sourceSize": {"w":320,"h":480}
+},
+{
+	"filename": "blue.png",
+	"frame": {"x":968,"y":158,"w":24,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":24},
+	"sourceSize": {"w":24,"h":24}
+},
+{
+	"filename": "cyan.png",
+	"frame": {"x":968,"y":132,"w":24,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":24},
+	"sourceSize": {"w":24,"h":24}
+},
+{
+	"filename": "gameover.jpeg",
+	"frame": {"x":324,"y":2,"w":320,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":480},
+	"sourceSize": {"w":320,"h":480}
+},
+{
+	"filename": "green.png",
+	"frame": {"x":968,"y":106,"w":24,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":24},
+	"sourceSize": {"w":24,"h":24}
+},
+{
+	"filename": "magenta.png",
+	"frame": {"x":968,"y":80,"w":24,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":24},
+	"sourceSize": {"w":24,"h":24}
+},
+{
+	"filename": "orange.png",
+	"frame": {"x":968,"y":54,"w":24,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":24},
+	"sourceSize": {"w":24,"h":24}
+},
+{
+	"filename": "red.png",
+	"frame": {"x":968,"y":28,"w":24,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":24},
+	"sourceSize": {"w":24,"h":24}
+},
+{
+	"filename": "tetris_bg.jpg",
+	"frame": {"x":2,"y":2,"w":320,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":480},
+	"sourceSize": {"w":320,"h":480}
+},
+{
+	"filename": "yellow.png",
+	"frame": {"x":968,"y":2,"w":24,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":24},
+	"sourceSize": {"w":24,"h":24}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "asset-pack.png",
+	"format": "RGBA8888",
+	"size": {"w":994,"h":484},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:1e3fe6ab9cdf2519947d235f62227f24:130c4484aec326891e6cd225d1d623d9:8f49094c904a247418a93cd1380b83c9$"
+}
 }
