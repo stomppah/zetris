@@ -3,7 +3,7 @@
 
 //global variables
 window.onload = function () {
-  var game = new Phaser.Game(800, 600, Phaser.AUTO, 'tetris-clone');
+  var game = new Phaser.Game(320, 480, Phaser.AUTO, 'tetris-clone');
 
   // Game States
   game.state.add('boot', require('./states/boot'));
@@ -15,7 +15,29 @@ window.onload = function () {
 
   game.state.start('boot');
 };
-},{"./states/boot":2,"./states/gameover":3,"./states/menu":4,"./states/play":5,"./states/preload":6}],2:[function(require,module,exports){
+},{"./states/boot":3,"./states/gameover":4,"./states/menu":5,"./states/play":6,"./states/preload":7}],2:[function(require,module,exports){
+'use strict';
+
+var Tetromino = function (game, x, y, colour, frame) {
+    Phaser.Sprite.call(this, game, x, y, colour, frame);
+
+    // initialize your prefab here
+    this.anchor.setTo(0.5, 0.5);
+
+};
+
+Tetromino.prototype = Object.create(Phaser.Sprite.prototype);
+Tetromino.prototype.constructor = Tetromino;
+
+Tetromino.prototype.update = function () {
+
+    // write your prefab's specific update code here
+
+};
+
+module.exports = Tetromino;
+
+},{}],3:[function(require,module,exports){
 
 'use strict';
 
@@ -34,7 +56,7 @@ Boot.prototype = {
 
 module.exports = Boot;
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 
 'use strict';
 function GameOver() {}
@@ -62,7 +84,7 @@ GameOver.prototype = {
 };
 module.exports = GameOver;
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 
 'use strict';
 function Menu() {}
@@ -94,34 +116,45 @@ Menu.prototype = {
 
 module.exports = Menu;
 
-},{}],5:[function(require,module,exports){
-
-  'use strict';
-  function Play() {}
-  Play.prototype = {
-    create: function() {
-      this.game.physics.startSystem(Phaser.Physics.ARCADE);
-      this.sprite = this.game.add.sprite(this.game.width/2, this.game.height/2, 'yeoman');
-      this.sprite.inputEnabled = true;
-      
-      this.game.physics.arcade.enable(this.sprite);
-      this.sprite.body.collideWorldBounds = true;
-      this.sprite.body.bounce.setTo(1,1);
-      this.sprite.body.velocity.x = this.game.rnd.integerInRange(-500,500);
-      this.sprite.body.velocity.y = this.game.rnd.integerInRange(-500,500);
-
-      this.sprite.events.onInputDown.add(this.clickListener, this);
-    },
-    update: function() {
-
-    },
-    clickListener: function() {
-      this.game.state.start('gameover');
-    }
-  };
-  
-  module.exports = Play;
 },{}],6:[function(require,module,exports){
+'use strict';
+var Tetromino = require('../prefabs/tetromino');
+function Play() {
+}
+Play.prototype = {
+    create: function () {
+
+         // add the background sprite
+        this.background = this.game.add.sprite(0, 0, 'tetris_bg');
+
+        this.tetromino = new Tetromino(this.game, 100, 100, 'blueBlock', [ [0, 0], [24, 0], [48, 0], 48, 24 ]);
+
+
+        var blueGroup = this.game.add.group();
+
+        for (var i = 0; i < 4; i++) {
+            var tetromino = new Tetromino(this.game, this.game.world.randomX, this.game.world.randomY, 'blueBlock');
+            blueGroup.add(tetromino);
+        }
+
+        /*
+         this.blueGroup.add(this.blue1);
+         this.blueGroup.add(this.blue2);
+         this.blueGroup.add(this.blue3);
+         this.blueGroup.add(this.blue4);
+
+         */
+    },
+    update: function () {
+
+    },
+    clickListener: function () {
+
+    }
+};
+
+module.exports = Play;
+},{"../prefabs/tetromino":2}],7:[function(require,module,exports){
 
 'use strict';
 function Preload() {
@@ -136,14 +169,21 @@ Preload.prototype = {
 
     this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
     this.load.setPreloadSprite(this.asset);
-    this.load.image('blueBlock', 'assets/blue.png');
-    this.load.image('blueBlock', 'assets/blue.png');
-    this.load.image('blueBlock', 'assets/blue.png');
-    this.load.image('blueBlock', 'assets/blue.png');
-    this.load.image('blueBlock', 'assets/blue.png');
-    this.load.image('blueBlock', 'assets/blue.png');
-    this.load.image('blueBlock', 'assets/blue.png');
 
+    /*
+
+     */
+    this.load.image('redBlock', 'assets/red.png');
+    this.load.image('orangeBlock', 'assets/orange.png');
+    this.load.image('yellowBlock', 'assets/yellow.png');
+    this.load.image('greenBlock', 'assets/green.png');
+    this.load.image('blueBlock', 'assets/blue.png');
+    this.load.image('cyanBlock', 'assets/cyan.png');
+    this.load.image('magentaBlock', 'assets/magenta.png');
+
+    this.load.image('background', 'assets/background.jpg');
+    this.load.image('tetris_bg', 'assets/tetris_bg.jpg');
+    this.load.image('gameover', 'assets/gameover.jpeg');
 
   },
   create: function() {
@@ -151,7 +191,7 @@ Preload.prototype = {
   },
   update: function() {
     if(!!this.ready) {
-      this.game.state.start('menu');
+        this.game.state.start('play');
     }
   },
   onLoadComplete: function() {

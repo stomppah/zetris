@@ -1,26 +1,29 @@
+'use strict';
+var Board = require('../prefabs/board');
+var Tetromino = require('../prefabs/tetromino');
+function Play() {
+}
+Play.prototype = {
+    BlockSize: 24,
+    create: function () {
 
-  'use strict';
-  function Play() {}
-  Play.prototype = {
-    create: function() {
-      this.game.physics.startSystem(Phaser.Physics.ARCADE);
-      this.sprite = this.game.add.sprite(this.game.width/2, this.game.height/2, 'yeoman');
-      this.sprite.inputEnabled = true;
-      
-      this.game.physics.arcade.enable(this.sprite);
-      this.sprite.body.collideWorldBounds = true;
-      this.sprite.body.bounce.setTo(1,1);
-      this.sprite.body.velocity.x = this.game.rnd.integerInRange(-500,500);
-      this.sprite.body.velocity.y = this.game.rnd.integerInRange(-500,500);
+         // add the background sprite
+        this.background = this.game.add.sprite(0, 0, 'tetris_bg');
 
-      this.sprite.events.onInputDown.add(this.clickListener, this);
+        var blueGroup = this.game.add.group();
+
+        for (var i = 0; i < 4; i++) {
+            var tetromino = new Tetromino(this.game, this.game.world.randomX, this.game.world.randomY, 'blueBlock');
+            blueGroup.add(tetromino);
+        }
+
     },
-    update: function() {
+    update: function () {
 
     },
-    clickListener: function() {
-      this.game.state.start('gameover');
+    clickListener: function () {
+
     }
-  };
-  
-  module.exports = Play;
+};
+
+module.exports = Play;

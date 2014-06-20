@@ -2,7 +2,7 @@
 
 //global variables
 window.onload = function () {
-  var game = new Phaser.Game(800, 600, Phaser.AUTO, 'tetris-clone');
+  var game = new Phaser.Game(320, 480, Phaser.AUTO, 'tetris-clone');
 
   // Game States
   game.state.add('boot', require('./states/boot'));
