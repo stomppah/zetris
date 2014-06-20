@@ -1,14 +1,21 @@
 'use strict';
+var Block = require('../prefabs/block');
+var Tetromino = function (game, x, y, type, frame) {
+    Phaser.Group.call(this, game);
 
-var Tetromino = function (game, x, y, colour, frame) {
-    Phaser.Sprite.call(this, game, x, y, colour, frame);
+    this.blockSize = 24;
+    x = x * this.blockSize;
+    y = y * this.blockSize;
+    this.coords = this.get(type);
 
-    // initialize your prefab here
-    this.anchor.setTo(0.5, 0.5);
+    for (var i = 0; i < 4; i++) {
+        var blockSprite = new Block(game, x + (this.coords[i][0] * this.blockSize), y + (this.coords[i][1] * this.blockSize), type);
+        game.add.sprite(blockSprite);
+    }
 
 };
 
-Tetromino.prototype = Object.create(Phaser.Sprite.prototype);
+Tetromino.prototype = Object.create(Phaser.Group.prototype);
 Tetromino.prototype.constructor = Tetromino;
 
 Tetromino.prototype.update = function () {
@@ -20,65 +27,100 @@ Tetromino.prototype.update = function () {
 Tetromino.prototype.get = function(type){
 
     /*
-     holds the coordinates of the individual blocks that make up the tetromino
-
-     'I': baseCoords = [0][0,0],
-                       [1][1,0],
-                       [2][2,0],
-                       [3][3,0];
-
-     'T': baseCoords = [0][0,0],
-                       [1][1,0],
-                       [2][0,1],
-                       [3][1,1];
-
-     'O': baseCoords = [0][0,0],
-                       [1][1,0],
-                       [2][0,1],
-                       [3][1,1];
-
-     'S': baseCoords = [0][0,0],
-                       [1][1,0],
-                       [2][1,1],
-                       [3][1,2];
-
-     'Z': baseCoords = [0][1,0],
-                       [1][1,1],
-                       [2][0,1],
-                       [3][0,2];
-
-     'J': baseCoords = [0][0,1],
-                       [1][1,1],
-                       [2][1,0],
-                       [3][2,0];
-
-     'L': baseCoords = [0][0,0],
-                       [1][1,0],
-                       [2][2,0],
-                       [3][2,1];
+     Holds the coordinates of the individual blocks that make up the tetromino.
      */
-    var baseCoords = [];
+    var baseCoords;
 
-
-
-    // generate the base coords according to the type passed
+    /*
+     Return the base coords according to the type passed
+      */
     switch (type) {
         case 'I':
-
+            /*
+                    0, 1, 2, 3
+             */
+            baseCoords = [
+                [ [0], [0,0] ],
+                [ [1], [1,0] ],
+                [ [2], [2,0] ],
+                [ [3], [3,0] ]
+            ];
             break;
         case 'T':
+            /*
+                       0,
+                    1, 2, 3
+             */
+            baseCoords = [
+                [ [0], [1,0] ],
+                [ [1], [0,1] ],
+                [ [2], [1,1] ],
+                [ [3], [2,1] ]
+            ];
             break;
         case 'O':
+            /*
+                    0, 1,
+                    2, 3,
+             */
+            baseCoords = [
+                [ [0], [0,0] ],
+                [ [1], [1,0] ],
+                [ [2], [0,1] ],
+                [ [3], [1,1] ]
+            ];
             break;
         case 'S':
+            /*
+                       0, 1,
+                    2, 3
+             */
+            baseCoords = [
+                [ [0], [1,0] ],
+                [ [1], [2,0] ],
+                [ [2], [0,1] ],
+                [ [3], [1,1] ]
+            ];
             break;
         case 'Z':
+            /*
+                    0, 1,
+                       2, 3
+             */
+            baseCoords = [
+                [ [0], [0,0] ],
+                [ [1], [1,0] ],
+                [ [2], [1,1] ],
+                [ [3], [2,1] ]
+            ];
             break;
         case 'J':
+            /*
+                    0, 1, 2,
+                          3
+             */
+            baseCoords = [
+                [ [0], [0,0] ],
+                [ [1], [1,0] ],
+                [ [2], [2,0] ],
+                [ [3], [2,1] ]
+            ];
             break;
-        case 'L':
+        case 'blueBlock':
+            /*
+                    0, 1, 2,
+                    3
+             */
+            baseCoords = [
+                [ [0], [0,0] ],
+                [ [1], [1,0] ],
+                [ [2], [2,0] ],
+                [ [3], [0,1] ]
+            ];
             break;
     }
+
+    return baseCoords;
 };
 
 module.exports = Tetromino;

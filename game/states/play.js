@@ -4,19 +4,14 @@ var Tetromino = require('../prefabs/tetromino');
 function Play() {
 }
 Play.prototype = {
-    BlockSize: 24,
     create: function () {
 
          // add the background sprite
         this.background = this.game.add.sprite(0, 0, 'tetris_bg');
 
-        var blueGroup = this.game.add.group();
+        var blueGroup = new Tetromino(this.game, 4, 4, 'blueBlock');
 
-        for (var i = 0; i < 4; i++) {
-            var tetromino = new Tetromino(this.game, this.game.world.randomX, this.game.world.randomY, 'blueBlock');
-            blueGroup.add(tetromino);
-        }
-
+        this.game.add.group(blueGroup);
     },
     update: function () {
 
